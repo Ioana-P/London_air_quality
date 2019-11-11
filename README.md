@@ -10,10 +10,17 @@ The proposed effect sizes below are partially taken from the TfL consultation on
 We are defining impact on air quality using the amount of Nitrogen Oxides (NOx) and particulate matter (PM10) as detected by automatic air sensors. We will select multiple sensor sites in London zone 1 that are inside the current ULEZ radius for our data. 
 
 Our hypotheses are:
+(Mina)
 1. The introducton of ULEZ (8th April 2019) decreased the amount of NOx in Zone 1 of Central London by at least 42%. 
-2. The introduction of ULEZ was at least 25% more effective than the introduction of LEZ (4th February 2008) in reducing NOx levels in Central London. 
+[H0] - ULEZ reduced the amount of NOx in Zone 1 by less than 42%.
+2. The introduction of ULEZ was at least 25% more effective than the introduction of LEZ (4th February 2008) in reducing NOx levels in Central London.
+[H0] - The effect of ULEZ on NOx levels was less than 25% more than the impact of LEZ. 
+
+(Ioana) 
 3. The introducton of ULEZ decreased the amount of PM10 in Zone 1 of Central London by at least 33%. 
+[H0] - ULEZ reduced the amount of PM10 in Zone 1 by less than 33%.
 4. The introduction of ULEZ was at least 25% more effective than the introduction of LEZ in reducing PM10 levels in Central London. 
+[H0] - The effect of ULEZ on PM10 levels was less than 25% more than the impact of LEZ. 
 
 
 _________________________________________________________________________
