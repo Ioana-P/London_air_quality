@@ -10,15 +10,34 @@ There can be an unlimited amount of support functions.
 Each support function should have an informative name and return the partially cleaned bit of the dataset.
 """
 import pandas as pd
+import time
+import scipy.stats as stats
+import numpy as np
 
-def support_function_one(example):
-    pass
+def format_time(data, date_col_name=''):
+    data[date_col_name] = pd.to_datetime(data[date_col_name])
+    data['Year'] = data[date_col_name].dt.year
+    data['Month'] = data[date_col_name].dt.month
+    return data
 
-def support_function_two(example):
-    pass
+def drop_null_values_and_cols(data, col_of_interest=[], col_to_drop=[]):
+"Takes in a dataframe, the columns you'd like to drop NaN values from, and any columns you'd like to drop"
+    data = data.drop(columns=col_to_drop)
+    for col in col_of_interest:
+        data = data.loc[data[col].isna()==False]
+    return data
 
-def support_function_three(example):
-    pass
+def create_test_sample(data, param_col, values):
+"""Takes in a dataframe and the columns you'd like to iterate over and the
+particular value you want to filter by, 
+e.g param_col = ['Year', 'Year'], values = [2017, 2009]"""
+    test_dataframes=[]
+    for i in range(len(values)):
+        test_data=data.loc[data[param_col[i]] == values[i]]
+        test_dataframes.append(test_data)
+    return pd.concat(test_dataframes, axis=0)
+
+
 
 def full_clean():
     """

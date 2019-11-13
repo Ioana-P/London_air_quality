@@ -11,21 +11,16 @@ import numpy as np
 from scipy import stats
 import math
 
-def create_sample_dists(cleaned_data, y_var=None, categories=[]):
-    """
-    Each hypothesis test will require you to create a sample distribution from your data
-    Best make a repeatable function
 
-    :param cleaned_data:
-    :param y_var: The numeric variable you are comparing
-    :param categories: the categories whose means you are comparing
-    :return: a list of sample distributions to be used in subsequent t-tests
+def create_sample_dists(data, y_var, n_samples, sample_size):
+"""Takes in either an np.array/list/pd Series, the number of samples we want to take, the size of each sample and creates a distribution of means, thus returning a normal distribution"""
+    sample_means = []
+    for i in range(n_samples):
+        sample = np.random.choice(data[y_var], size=sample_size, replace=True)
+        sample_means.append(np.mean(sample))
+        
+    return sample_means
 
-    """
-    htest_dfs = []
-
-    # Main chunk of code using t-tests or z-tests
-    return htest_dfs
 
 def compare_pval_alpha(p_val, alpha):
     status = ''
