@@ -21,7 +21,11 @@ def format_time(data, date_col_name=''):
     return data
 
 def drop_null_values_and_cols(data, col_of_interest=[], col_to_drop=[]):
-"Takes in a dataframe, the columns you'd like to drop NaN values from, and any columns you'd like to drop"
+"""Takes in a dataframe, the columns you'd like to drop NaN values from, and any columns you'd like to drop. 
+data - your dataframe;
+col_of_interest - the column you want to clean of NaN values;
+col_to_drop - columns you'd like to drop
+"""
     data = data.drop(columns=col_to_drop)
     for col in col_of_interest:
         data = data.loc[data[col].isna()==False]
@@ -39,18 +43,23 @@ e.g param_col = ['Year', 'Year'], values = [2017, 2009]"""
 
 
 
-def full_clean():
+def full_clean(input_data, date_column, columns_of_interest, column_to_drop, target_col, values_of_interest, output_file_name='clean_data_for_testing'):
     """
-    This is the one function called that will run all the support functions.
-    Assumption: Your data will be saved in a data folder and named "dirty_data.csv"
-
-    :return: cleaned dataset to be passed to hypothesis testing and visualization modules.
+    This function runs the full clean on our data.
+    input_data - data csv file name
+    date_column - the column with dates / that we would like to format to DateTime objects
+    columns_of_interest - the columns to clean of NaN values
+    column_to_drop - columns we don't want any more
+    target_col - the column we would like to filter by
+    values_of_interest - the values we will use to filter our target_col by
+    output_file_name - name for our csv file
     """
-    dirty_data = pd.read_csv("./data/dirty_data.csv")
+    dirty_data = pd.read_csv(input_data)
 
-    cleaning_data1 = support_function_one(dirty_data)
-    cleaning_data2 = support_function_two(cleaning_data1)
-    cleaned_data= support_function_three(cleaning_data2)
-    cleaned_data.to_csv('./data/cleaned_for_testing.csv')
+    cleaning_data1 = format_time(dirty_data)
+    cleaning_data2 = drop_null_values_and_cols(cleaning_data1, col_of_interest=columns_of_interest, col_to_drop = column_to_drop)
+    cleaned_data= create_test_sample(cleaning_data2, param_col = target_col, values = values_of_interest)
+    
+    cleaned_data.to_csv(f'./{output_file_name}.csv')
     
     return cleaned_data
