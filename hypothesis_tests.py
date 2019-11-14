@@ -12,6 +12,7 @@ from scipy import stats
 import math
 import numpy as np
 from statsmodels.stats.power import TTestIndPower, TTestPower
+import seaborn as sns
 
 
 def create_sample_dists(data, y_var, n_samples, sample_size):
@@ -76,6 +77,10 @@ def p_val(t_stat, df):
     return 1-stats.t.cdf(t_stat,df)
 
 
+def plot_dists(sample1,sample2):
+#     plt.legend(labels=['Post-ULEZ', 'Pre-ULEZ']
+    return sns.distplot(sample1,color='g', bins=10), sns.distplot(sample2, color='r', bins=10)
+
 
 
 """ ________________________FUNCTIONS ABOVE__________________________________"""
@@ -105,6 +110,9 @@ def hypothesis_test_one(sample1, sample2, variable, num_samples, sample_size,alp
     # Get data for tests   data, y_var, n_samples, sample_size
     test_sample1 = create_sample_dists(data=sample1, y_var=variable, n_samples=num_samples, sample_size=sample_size)
     test_sample2 = create_sample_dists(data=sample2, y_var=variable, n_samples=num_samples, sample_size=sample_size)
+    
+    plot_dists(test_sample1, test_sample2)
+    
     
     t_statistic = welch_t(test_sample1, test_sample2)
     
