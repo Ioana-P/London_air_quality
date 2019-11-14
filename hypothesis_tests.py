@@ -11,6 +11,7 @@ import numpy as np
 from scipy import stats
 import math
 import numpy as np
+from statsmodels.stats.power import TTestIndPower, TTestPower
 
 
 def create_sample_dists(data, y_var, n_samples, sample_size):
@@ -31,25 +32,17 @@ def compare_pval_alpha(p_val, alpha):
     p_val - the p-value obtained from a t-statistical test;
     alpha - our declared value of alpha for this hypothesis"""
     status = ''
-    if p_val > alpha:
+    if p_val >= alpha:
         status = "Fail to reject"
     else:
         status = 'Reject'
     return status
 
+def pool_var(sample1, sample2):
+    # Calculates the pooled variances for two samples
+    return ((len(sample1)-1)*np.var(sample1) + (len(sample2)-1)*np.var(sample2))/(len(sample1) + len(sample2) - 2)
 
-def Cohen_d(expr_sample, ctlr_sample):
-    """Calculates the Cohen's d effect size for two groups; returns a float
-    expr_sample - experiment sample
-    ctlr_sample - control sample"""
-    diff = expr_sample.mean() - ctlr_sample.mean()
-    # Calculate the pooled threshold as shown earlier
-    pooled_var = pooled_variance(expr_sample, ctlr_sample)
-    
-    # Calculate Cohen's d statistic
-    d = diff / np.sqrt(pooled_var)
-    
-    return d
+
 
 
 def welch_t(sample1, sample2):
@@ -58,6 +51,13 @@ def welch_t(sample1, sample2):
     denominator = np.sqrt(np.var(sample1)/len(sample1) + np.var(sample2)/len(sample2))
     return np.abs(numerator/denominator)    
 
+def Cohen_d(expr_sample, ctrl_sample):
+    diff = expr_sample.mean() - ctrl_sample.mean()
+    pooled_variance = pool_var(expr_sample, ctrl_sample)
+    # Calculate Cohen's d statistic
+    d = diff / np.sqrt(pooled_variance)
+    
+    return d
 
 def welch_dof(sample1,sample2):
     """Calculates the degrees of freedom for Welch's T-test"""
@@ -71,7 +71,10 @@ def welch_dof(sample1,sample2):
     return num/denom
 
 def p_val(t_stat, df):
+    """Calculates the p value by calculating the complement of the cumulative density t-function using our
+    degrees of freedom"""
     return 1-stats.t.cdf(t_stat,df)
+
 
 
 
@@ -80,7 +83,7 @@ def p_val(t_stat, df):
 
 
 
-def hypothesis_test_one(alpha = None, sample1, sample2, variable, num_samples, sample_size):
+def hypothesis_test_one(sample1, sample2, variable, num_samples, sample_size,alpha = None):
     """
     This hypothesis test should take in experimental (sample1) and control samples (sample2) and the variable column
     within those dfs which we wish to compare. Panda Dataframes/Series are expected. 
@@ -97,6 +100,8 @@ def hypothesis_test_one(alpha = None, sample1, sample2, variable, num_samples, s
     
     returns the status (string)
     """
+    
+    
     # Get data for tests   data, y_var, n_samples, sample_size
     test_sample1 = create_sample_dists(data=sample1, y_var=variable, n_samples=num_samples, sample_size=sample_size)
     test_sample2 = create_sample_dists(data=sample2, y_var=variable, n_samples=num_samples, sample_size=sample_size)
@@ -110,7 +115,8 @@ def hypothesis_test_one(alpha = None, sample1, sample2, variable, num_samples, s
     ###
     # Main chunk of code using t-tests or z-tests, effect size, power, etc
     ###
-
+    power_analysis = TTestIndPower()
+    
     # starter code for return statement and printed results
     status = compare_pval_alpha(p_value, alpha)
     assertion = ''
@@ -119,25 +125,58 @@ def hypothesis_test_one(alpha = None, sample1, sample2, variable, num_samples, s
     else:
         assertion = "can"
         coh_d = Cohen_d(expr_sample=test_sample1, ctrl_sample=test_sample2)
+        power = power_analysis.solve_power(effect_size=coh_d, nobs1=len(sample1), alpha=alpha)
 
     
-       
+    
+    
+    # Here we generate our final statement on whether our null hypothesis can be rejected or not and what 
+    # our effect size is, if the H0 is rejected.
 
-    print(f'Based on the p value of {p_val} and our alpha of {alpha} we {status.lower()}  the null hypothesis.'
-          f'\n Due to these results, we  {assertion} state that there is a difference between NONE')
+    print(f'Based on the p value of {p_value} and our alpha of {alpha} we {status.lower()}  the null hypothesis.'
+          f'\n Due to these results, we  {assertion} state that there is a difference between our samples ')
 
     if assertion == 'can':
-        print(f"with an effect size, cohen's d, of {str(coh_d)} and power of {power}.")
+        print(f"with an effect size, Cohen's d, of {str(round(coh_d,3))} and power of {power}.")
     else:
         print(".")
 
-    return status
+    return (status, assertion, coh_d)
 
-def hypothesis_test_two():
-    pass
+"""___________________________________________________________________________________________"""
 
-def hypothesis_test_three():
+
+def hypothesis_test_two(sample1, sample2, 
+                        variable, num_samples, sample_size, 
+                        other_sample1, other_sample2, 
+                        var_of_interest, alpha = None):
     
-
-def hypothesis_test_four():
-    pass
+    """
+    This hypothesis test will conduct the first hypothesis test for two pairs of samples (designated as sample1, sample2 
+    and other_sample1, other_sample2. It then prints the status for both signifance tests and then returns the statement with 
+    a comparison of the two effect sizes."""
+    
+    first_test = hypothesis_test_one(sample1, sample2, variable, num_samples, sample_size, alpha = alpha)
+    assertion = first_test[1]
+    if assertion=='can':
+        assertion1=True
+        coh_d1 = first_test[2]
+    second_test = hypothesis_test_one(other_sample1, other_sample2, variable, num_samples, sample_size, alpha = alpha)
+    assertion = second_test[1]
+    if assertion=='can':
+        assertion2=True
+        coh_d2 = second_test[2]
+    
+    if abs(coh_d1)>abs(coh_d2):
+        difference='greater'
+    else:
+        difference='less'
+    
+    print(first_test[0],'\n')
+    print(second_test[0],'\n')
+    
+    if assertion1 and assertion2:
+        statement = f"The effect of ULEZ on the levels of {var_of_interest} was {abs(coh_d1/coh_d2)} times {difference} than the effect of LEZ."
+        
+    return statement
+    
