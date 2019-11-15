@@ -87,12 +87,12 @@ def plot_dists(sample_list, label_list, colours_list):
     return x,y,lines,plt.legend()
 
 
-def visualize_one_side_t(t_stat, n_control, n_experimental, df):
+def visualize_one_side_t(t_stat, df):
     # initialize a matplotlib "figure"
     fig = plt.figure(figsize=(15,10))
     ax = fig.gca()
     # generate points on the x axis between -4 and 4:
-    xs = np.linspace(-4,4,200)
+    xs = np.linspace(-50,50,200)
     # use stats.t.pdf to get values on the probability density function for the t-distribution
     ys = stats.t.pdf(xs, df, 0, 1)
     ax.plot(xs, ys, linewidth=3, color='darkblue')
