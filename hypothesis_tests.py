@@ -78,9 +78,26 @@ def p_val(t_stat, df):
     return 1-stats.t.cdf(t_stat,df)
 
 
-def plot_dists(sample1,sample2):
-#     plt.legend(labels=['Post-ULEZ', 'Pre-ULEZ']
-    return sns.distplot(sample1,color='g', bins=10), sns.distplot(sample2, color='r', bins=10)
+def plot_dists(sample_list, label_list, colours_list):
+    return sns.distplot(sample_list[0],color=colours_list[0], bins=10, label=label_list[0]), sns.distplot(sample_list[1], color=colours_list[1], bins=10, label_list[1]),plt.vlines(np.mean(sample_list[0],np.mean(sample_list[1]),ymin=0, ymax=0.3, label='Mean values'), plt.legend()
+
+
+def visualize_one_side_t(t_stat, n_control, n_experimental, df, title):
+    # initialize a matplotlib "figure"
+    fig = plt.figure(figsize=(15,10))
+    ax = fig.gca()
+    # generate points on the x axis between -4 and 4:
+    xs = np.linspace(-4,4,200)
+    # use stats.t.pdf to get values on the probability density function for the t-distribution
+    ys = stats.t.pdf(xs, df, 0, 1)
+    ax.plot(xs, ys, linewidth=3, color='darkblue')
+
+    # Draw one sided boundary for critical-t
+    ax.axvline(x=+t_stat, color='red', linestyle='--', lw=3,label='t-statistic')
+    ax.legend()
+    plt.show()
+    return 
+
 
 
 
@@ -89,7 +106,12 @@ def plot_dists(sample1,sample2):
 
 
 
-def hypothesis_test_one(sample1, sample2, variable, num_samples, sample_size,alpha = None):
+def hypothesis_test_one(sample1, sample2, 
+                        variable, num_samples, 
+                        sample_size,
+                        sample1_label, sample2_label,
+                        sample1_colour, sample2_colour,
+                        alpha = None):
     """
     This hypothesis test should take in experimental (sample1) and control samples (sample2) and the variable column
     within those dfs which we wish to compare. Panda Dataframes/Series are expected. 
@@ -112,7 +134,12 @@ def hypothesis_test_one(sample1, sample2, variable, num_samples, sample_size,alp
     test_sample1 = create_sample_dists(data=sample1, y_var=variable, n_samples=num_samples, sample_size=sample_size)
     test_sample2 = create_sample_dists(data=sample2, y_var=variable, n_samples=num_samples, sample_size=sample_size)
     
-    plot_dists(test_sample1, test_sample2)
+    test_samples = [test_sample1, test_sample2]
+    test_samples_labels = [sample1_label, sample2_label]
+    test_samples_colours = [sample1_colour, sample2_colour]
+    
+    
+    plot_dists(test_samples, test_samples_labels, test_samples_colours)
     
     
     t_statistic = welch_t(test_sample1, test_sample2)
@@ -150,31 +177,65 @@ def hypothesis_test_one(sample1, sample2, variable, num_samples, sample_size,alp
     else:
         print(".")
 
-    return (status, assertion, coh_d)
+    return (status, assertion, coh_d, t_statistic, dof)
+
+
 
 """___________________________________________________________________________________________"""
 
 
 def hypothesis_test_two(sample1, sample2, 
-                        variable, num_samples, sample_size, 
+                        sample1_label, sample2_label,
+                        sample1_colour, sample2_colour,
+                        variable, num_samples, 
+                        sample_size, 
+                        first_factor,
                         other_sample1, other_sample2, 
-                        var_of_interest, alpha = None):
+                        other_sample1_label, other_sample2_label,
+                        other_sample1_colour, other_sample2_colour,
+                        second_factor,
+                        alpha = None):
     
     """
     This hypothesis test will conduct the first hypothesis test for two pairs of samples (designated as sample1, sample2 
     and other_sample1, other_sample2. It then prints the status for both signifance tests and then returns the statement with 
-    a comparison of the two effect sizes."""
+    a comparison of the two effect sizes.
+    first_factor - name of the factor whose effect you're testing for; first one to appear in statement
+    second_factor - name of the second factor; second to appear in statement. """
     
-    first_test = hypothesis_test_one(sample1, sample2, variable, num_samples, sample_size, alpha = alpha)
+    # running hypothesis tests number 1 on each pair of data, setting variables for the cohen's d
+    # and for the assertion regarding the null hypotheses. 
+    first_test = hypothesis_test_one(sample1, sample2,
+                                     variable, num_samples, 
+                                     sample_size, 
+                                     sample1_label, sample2_label,
+                                     sample1_colour, sample2_colour,
+                                     alpha = alpha)
+    
+    
     assertion = first_test[1]
     if assertion=='can':
         assertion1=True
         coh_d1 = first_test[2]
-    second_test = hypothesis_test_one(other_sample1, other_sample2, variable, num_samples, sample_size, alpha = alpha)
+    
+    
+ 
+    second_test = hypothesis_test_one(other_sample1, other_sample2, 
+                                      variable, num_samples, 
+                                      sample_size, 
+                                      other_sample1_label, other_sample2_label,
+                                      other_sample1_colour, other_sample2_colour,
+                                      alpha = alpha)
+    
+    
     assertion = second_test[1]
     if assertion=='can':
         assertion2=True
         coh_d2 = second_test[2]
+    
+    # assuming both null hypotheses are rejected, the cohen's d is compared for the two pairs 
+    # and we have a statement printed that compares the two, plus 
+    
     
     if abs(coh_d1)>abs(coh_d2):
         difference='greater'
@@ -184,8 +245,15 @@ def hypothesis_test_two(sample1, sample2,
     print(first_test[0],'\n')
     print(second_test[0],'\n')
     
+    if first_factor==None:
+        first_factor='first_factor'
+        
+    if second_factor==None:
+        second_factor='second_factor'
+    
+    
     if assertion1 and assertion2:
-        statement = f"The effect of ULEZ on the levels of {var_of_interest} was {abs(coh_d1/coh_d2)} times {difference} than the effect of LEZ."
+        statement = f"The effect of {first_factor} on the levels of {var_of_interest} was {abs(coh_d1/coh_d2)} times {difference} than the effect of {second_factor}."
         
     return statement
     
