@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:8888/tree -->
+<html lang="en-gb"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>Home</title>
+    <link id="favicon" rel="shortcut icon" type="image/x-icon" href="http://localhost:8888/static/base/images/favicon.ico?v=97c6417ed01bdc0ae3ef32ae4894fd03">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./Home_files/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="./Home_files/jquery.typeahead.min.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="./Home_files/style.min.css" type="text/css">
+    
+    <link rel="stylesheet" href="./Home_files/custom.css" type="text/css">
+    <script src="./Home_files/promise.min.js" type="text/javascript" charset="utf-8"></script><script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    if (!window.web3.currentProvider ||
+        !window.web3.currentProvider.isMetaMask) {
+      __insertDappDetected()
+    }
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script>
+    <script src="./Home_files/index.js" type="text/javascript"></script>
+    <script src="./Home_files/index(1).js" type="text/javascript"></script>
+    <script src="./Home_files/index(2).js" type="text/javascript"></script>
+    <script src="./Home_files/require.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      require.config({
+          
+          urlArgs: "v=20191115122110",
+          
+          baseUrl: '/static/',
+          paths: {
+            'auth/js/main': 'auth/js/main.min',
+            custom : '/custom',
+            nbextensions : '/nbextensions',
+            kernelspecs : '/kernelspecs',
+            underscore : 'components/underscore/underscore-min',
+            backbone : 'components/backbone/backbone-min',
+            jed: 'components/jed/jed',
+            jquery: 'components/jquery/jquery.min',
+            json: 'components/requirejs-plugins/src/json',
+            text: 'components/requirejs-text/text',
+            bootstrap: 'components/bootstrap/dist/js/bootstrap.min',
+            bootstraptour: 'components/bootstrap-tour/build/js/bootstrap-tour.min',
+            'jquery-ui': 'components/jquery-ui/jquery-ui.min',
+            moment: 'components/moment/min/moment-with-locales',
+            codemirror: 'components/codemirror',
+            termjs: 'components/xterm.js/xterm',
+            typeahead: 'components/jquery-typeahead/dist/jquery.typeahead.min',
+          },
+          map: { // for backward compatibility
+              "*": {
+                  "jqueryui": "jquery-ui",
+              }
+          },
+          shim: {
+            typeahead: {
+              deps: ["jquery"],
+              exports: "typeahead"
+            },
+            underscore: {
+              exports: '_'
+            },
+            backbone: {
+              deps: ["underscore", "jquery"],
+              exports: "Backbone"
+            },
+            bootstrap: {
+              deps: ["jquery"],
+              exports: "bootstrap"
+            },
+            bootstraptour: {
+              deps: ["bootstrap"],
+              exports: "Tour"
+            },
+            "jquery-ui": {
+              deps: ["jquery"],
+              exports: "$"
+            }
+          },
+          waitSeconds: 30,
+      });
+
+      require.config({
+          map: {
+              '*':{
+                'contents': 'services/contents',
+              }
+          }
+      });
+
+      // error-catching custom.js shim.
+      define("custom", function (require, exports, module) {
+          try {
+              var custom = require('custom/custom');
+              console.debug('loaded custom.js');
+              return custom;
+          } catch (e) {
+              console.error("error loading custom.js", e);
+              return {};
+          }
+      })
+
+    document.nbjs_translations = {"domain": "nbjs", "locale_data": {"nbjs": {"": {"domain": "nbjs"}}}};
+    document.documentElement.lang = navigator.language.toLowerCase();
+    </script>
+
+    
+    
+
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="services/contents" src="./Home_files/contents.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="custom/custom" src="./Home_files/custom.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nbextensions_configurator/tree_tab/main" src="./Home_files/main.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nb_conda/tree" src="./Home_files/tree.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nbextensions_configurator/main" src="./Home_files/main(1).js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nbextensions_configurator/render/render" src="./Home_files/render.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nb_conda/models" src="./Home_files/models.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nb_conda/views" src="./Home_files/views.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nb_conda/urls" src="./Home_files/urls.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="notebook/js/quickhelp" src="./Home_files/quickhelp.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nbextensions_configurator/kse_components" src="./Home_files/kse_components.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery-ui" src="./Home_files/jquery-ui.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="base/js/security" src="./Home_files/security.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="notebook/js/mathjaxutils" src="./Home_files/mathjaxutils.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/marked/lib/marked" src="./Home_files/marked.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/addon/runmode/runmode" src="./Home_files/runmode.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/mode/gfm/gfm" src="./Home_files/gfm.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="notebook/js/codemirror-ipython" src="./Home_files/codemirror-ipython.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="notebook/js/codemirror-ipythongfm" src="./Home_files/codemirror-ipythongfm.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nb_conda/common" src="./Home_files/common.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="nbextensions/nbextensions_configurator/quickhelp_shim" src="./Home_files/quickhelp_shim.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/mode/python/python" src="./Home_files/python.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/google-caja/html-css-sanitizer-minified" src="./Home_files/html-css-sanitizer-minified.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/mode/markdown/markdown" src="./Home_files/markdown.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/addon/mode/overlay" src="./Home_files/overlay.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/addon/mode/multiplex" src="./Home_files/multiplex.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/mode/stex/stex" src="./Home_files/stex.js"></script><link rel="stylesheet" type="text/css" href="./Home_files/conda.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="codemirror/mode/xml/xml" src="./Home_files/xml.js"></script><link rel="stylesheet" type="text/css" href="./Home_files/main.css"><link type="text/css" rel="stylesheet" href="./Home_files/rendermd.css"></head>
+
+<body class="" data-jupyter-api-token="2cfc6111963a52cd8bca8e5e7f9c721ca1960b6d77585d2e" data-base-url="/" data-notebook-path="" data-terminals-available="True" data-server-root="~/Desktop/Io/mod3proj/London_air_quality" dir="ltr">
+
+<noscript>
+    <div id='noscript'>
+      Jupyter Notebook requires JavaScript.<br>
+      Please enable it to proceed. 
+  </div>
+</noscript>
+
+<div id="header" style="display: block;">
+  <div id="header-container" class="container">
+  <div id="ipython_notebook" class="nav navbar-brand"><a href="http://localhost:8888/tree?token=2cfc6111963a52cd8bca8e5e7f9c721ca1960b6d77585d2e" title="dashboard">
+      <img src="./Home_files/logo.png" alt="Jupyter Notebook">
+  </a></div>
+
+  
+  <span class="flex-spacer"></span>
+  
+    <span id="shutdown_widget">
+      <button id="shutdown" class="btn btn-sm navbar-btn" title="Stop the Jupyter server">
+          Quit
+      </button>
+    </span>
+  
+
+  
+  
+  
+  
+
+    <span id="login_widget">
+      
+        <button id="logout" class="btn btn-sm navbar-btn">Logout</button>
+      
+    </span>
+
+  
+
+  
+  
+  </div>
+  <div class="header-bar"></div>
+
+  
+  
+</div>
+
+<div id="site" style="display: block; height: 1050.01px;">
+
+
+  <div id="ipython-main-app" class="container">
+    <div id="tab_content" class="tabbable">
+      <ul id="tabs" class="nav nav-tabs">
+        <li class="active"><a href="http://localhost:8888/tree#notebooks" data-toggle="tab">Files</a></li>
+        <li><a href="http://localhost:8888/tree#running" data-toggle="tab">Running</a></li>
+        <li><a href="http://localhost:8888/tree#clusters" data-toggle="tab" class="clusters_tab_link">Clusters</a></li>
+      <li><a id="conda_tab" href="http://localhost:8888/tree#conda" data-toggle="tab">Conda</a></li><li><a href="http://localhost:8888/tree#nbextensions_configurator" data-toggle="tab">Nbextensions</a></li></ul>
+      <div class="tab-content">
+        <div id="notebooks" class="tab-pane active">
+          <div id="notebook_toolbar" class="row list_toolbar">
+            <div class="col-sm-8 no-padding">
+              <div class="dynamic-instructions">
+                Select items to perform actions on them.
+              </div>
+              <div class="dynamic-buttons">
+                  <button title="Duplicate selected" aria-label="Duplicate selected" class="duplicate-button btn btn-default btn-xs" style="display: none;">Duplicate</button>
+                  <button title="Rename selected" aria-label="Rename selected" class="rename-button btn btn-default btn-xs" style="display: none;">Rename</button>
+                  <button title="Move selected" aria-label="Move selected" class="move-button btn btn-default btn-xs" style="display: none;">Move</button>
+                  <button title="Download selected" aria-label="Download selected" class="download-button btn btn-default btn-xs" style="display: none;">Download</button>
+                  <button title="Shutdown selected notebook(s)" aria-label="Shutdown selected notebook(s)" class="shutdown-button btn btn-default btn-xs btn-warning" style="display: none;">Shutdown</button>
+                  <button title="View selected" aria-label="View selected" class="view-button btn btn-default btn-xs" style="display: none;">View</button>
+                  <button title="Edit selected" aria-label="Edit selected" class="edit-button btn btn-default btn-xs" style="display: none;">Edit</button>
+                  <button title="Delete selected" aria-label="Delete selected" class="delete-button btn btn-default btn-xs btn-danger" style="display: none;"><i class="fa fa-trash"></i></button>
+              </div>
+            </div>
+            <div class="col-sm-4 no-padding tree-buttons">
+              <div class="pull-right">
+                <form id="alternate_upload" class="alternate_upload">
+                  <span id="notebook_list_info" class="toolbar_info">
+                  <span class="btn btn-xs btn-default btn-upload">
+                  <input title="Click to browse for a file to upload." type="file" name="datafile" class="fileinput" multiple="multiple">
+                  Upload
+                  </span>
+                  </span>
+                </form>
+                <div id="new-buttons" class="btn-group">
+                  <button class="dropdown-toggle btn btn-default btn-xs" id="new-dropdown-button" data-toggle="dropdown">
+                  <span>New</span>
+                  <span class="caret"></span>
+                  </button>
+                  <ul id="new-menu" class="dropdown-menu">
+                    <li role="presentation" class="dropdown-header" id="notebook-kernels">Notebook:</li><li id="kernel-python3"><a href="http://localhost:8888/tree#" title="Create a new notebook with Python 3">Python 3</a></li><li id="kernel-conda-env-learn-env-py"><a href="http://localhost:8888/tree#" title="Create a new notebook with Python [conda env:learn-env] *">Python [conda env:learn-env] *</a></li><li id="kernel-conda-root-py"><a href="http://localhost:8888/tree#" title="Create a new notebook with Python [conda env:root]">Python [conda env:root]</a></li><li id="kernel-learn-env"><a href="http://localhost:8888/tree#" title="Create a new notebook with learn-env">learn-env</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="dropdown-header">Other:</li>
+                    <li role="presentation" id="new-file">
+                      <a role="menuitem" tabindex="-1" href="http://localhost:8888/tree#">Text File</a>
+                    </li>
+                    <li role="presentation" id="new-folder">
+                      <a role="menuitem" tabindex="-1" href="http://localhost:8888/tree#">Folder</a>
+                    </li>
+                    
+                    <li role="presentation" id="new-terminal">
+                      <a role="menuitem" tabindex="-1" href="http://localhost:8888/tree#">Terminal</a>
+                    </li>
+                    
+                  </ul>
+                </div>
+                <div class="btn-group">
+                    <button id="refresh_notebook_list" title="Refresh notebook list" aria-label="Refresh notebook list" class="btn btn-default btn-xs"><i class="fa fa-refresh"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="notebook_list" class="list_container">
+            <div id="notebook_list_header" class="row list_header">
+              <div class="btn-group dropdown" id="tree-selector">
+                <button title="Select All / None" aria-label="Select All / None" type="button" class="btn btn-default btn-xs" id="button-select-all">
+                  <input type="checkbox" class="pull-left tree-selector" id="select-all"><span id="counter-select-all">0</span>
+                </button>
+                <button title="Select..." class="btn btn-default btn-xs dropdown-toggle" type="button" id="tree-selector-btn" data-toggle="dropdown" aria-expanded="true">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul id="selector-menu" class="dropdown-menu" role="menu" aria-labelledby="tree-selector-btn">
+                  <li role="presentation"><a id="select-folders" role="menuitem" tabindex="-1" href="http://localhost:8888/tree#" title="Select All Folders"><i class="menu_icon folder_icon icon-fixed-width"></i>&nbsp;Folders</a></li>
+                  <li role="presentation"><a id="select-notebooks" role="menuitem" tabindex="-1" href="http://localhost:8888/tree#" title="Select All Notebooks"><i class="menu_icon notebook_icon icon-fixed-width"></i>&nbsp;All Notebooks</a></li>
+                  <li role="presentation"><a id="select-running-notebooks" role="menuitem" tabindex="-1" href="http://localhost:8888/tree#" title="Select Running Notebooks"><i class="menu_icon running_notebook_icon icon-fixed-width"></i>&nbsp;Running</a></li>
+                  <li role="presentation"><a id="select-files" role="menuitem" tabindex="-1" href="http://localhost:8888/tree#" title="Select All Files"><i class="menu_icon file_icon icon-fixed-width"></i>&nbsp;Files</a></li>
+                </ul>
+              </div>
+              <div id="project_name">
+                <ul class="breadcrumb"><li><a href="http://localhost:8888/tree"><i class="fa fa-folder"></i></a></li><li><a href="http://localhost:8888/tree"></a></li></ul>
+              </div>
+              <div id="file_size" class="pull-right sort_button">
+                  <span class="btn btn-xs btn-default sort-action" id="file-size">
+                      File size
+                      <i class="fa"></i>
+                  </span>
+              </div>
+              <div id="last_modified" class="pull-right sort_button">
+                  <span class="btn btn-xs btn-default sort-action" id="last-modified">
+                      Last Modified
+                      <i class="fa"></i>
+                  </span>
+              </div>
+              <div id="sort_name" class="pull-right sort_button">
+                  <span class="btn btn-xs btn-default sort-action" id="sort-name">
+                      Name
+                      <i class="fa fa-arrow-down"></i>
+                  </span>
+              </div>
+            </div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon folder_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/tree/hypothesis_tests.py_files"><span class="item_name">hypothesis_tests.py_files</span></a><span class="file_size pull-right">&nbsp;</span><span class="item_modified pull-right" title="2019-11-15 12:20">an hour ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/hypothesis_testing.ipynb" target="_blank"><span class="item_name">hypothesis_testing.ipynb</span></a><span class="file_size pull-right">1.56 kB</span><span class="item_modified pull-right" title="2019-11-11 12:22">4 days ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon running_notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/LondonAirQuality_final_notebook.ipynb" target="_blank"><span class="item_name">LondonAirQuality_final_notebook.ipynb</span></a><span class="file_size pull-right">907 kB</span><span class="item_modified pull-right" title="2019-11-15 13:29">seconds ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/mina_monday.ipynb" target="_blank"><span class="item_name">mina_monday.ipynb</span></a><span class="file_size pull-right">72.3 kB</span><span class="item_modified pull-right" title="2019-11-15 10:07">3 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/mina_notwork.ipynb" target="_blank"><span class="item_name">mina_notwork.ipynb</span></a><span class="file_size pull-right">456 kB</span><span class="item_modified pull-right" title="2019-11-13 16:29">2 days ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/Mod3notebook.ipynb" target="_blank"><span class="item_name">Mod3notebook.ipynb</span></a><span class="file_size pull-right">571 kB</span><span class="item_modified pull-right" title="2019-11-15 09:39">4 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/Mod3notebook_final.ipynb" target="_blank"><span class="item_name">Mod3notebook_final.ipynb</span></a><span class="file_size pull-right">142 kB</span><span class="item_modified pull-right" title="2019-11-15 11:51">2 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/Test_mina.ipynb" target="_blank"><span class="item_name">Test_mina.ipynb</span></a><span class="file_size pull-right">180 kB</span><span class="item_modified pull-right" title="2019-11-15 11:51">2 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/APICaller.py" target="_blank"><span class="item_name">APICaller.py</span></a><span class="file_size pull-right">1.42 kB</span><span class="item_modified pull-right" title="2019-11-14 12:07">a day ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/city_no2.csv" target="_blank"><span class="item_name">city_no2.csv</span></a><span class="file_size pull-right">1.08 MB</span><span class="item_modified pull-right" title="2019-11-13 16:47">2 days ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/city_pm10.csv" target="_blank"><span class="item_name">city_pm10.csv</span></a><span class="file_size pull-right">1.31 MB</span><span class="item_modified pull-right" title="2019-11-13 16:47">2 days ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/clean_city_no2_lez.csv" target="_blank"><span class="item_name">clean_city_no2_lez.csv</span></a><span class="file_size pull-right">114 kB</span><span class="item_modified pull-right" title="2019-11-15 12:25">an hour ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/clean_city_no2_Ulez.csv" target="_blank"><span class="item_name">clean_city_no2_Ulez.csv</span></a><span class="file_size pull-right">138 kB</span><span class="item_modified pull-right" title="2019-11-15 12:25">an hour ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/clean_city_pm10_lez.csv" target="_blank"><span class="item_name">clean_city_pm10_lez.csv</span></a><span class="file_size pull-right">131 kB</span><span class="item_modified pull-right" title="2019-11-15 12:25">an hour ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/clean_city_pm10_Ulez.csv" target="_blank"><span class="item_name">clean_city_pm10_Ulez.csv</span></a><span class="file_size pull-right">155 kB</span><span class="item_modified pull-right" title="2019-11-15 12:25">an hour ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/clean_data_for_testing.csv" target="_blank"><span class="item_name">clean_data_for_testing.csv</span></a><span class="file_size pull-right">283 kB</span><span class="item_modified pull-right" title="2019-11-15 11:51">2 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/cleaned_df.csv" target="_blank"><span class="item_name">cleaned_df.csv</span></a><span class="file_size pull-right">1.15 MB</span><span class="item_modified pull-right" title="2019-11-15 11:51">2 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/data_cleaning.py" target="_blank"><span class="item_name">data_cleaning.py</span></a><span class="file_size pull-right">2.85 kB</span><span class="item_modified pull-right" title="2019-11-15 10:47">3 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/hypothesis_tests.py" target="_blank"><span class="item_name">hypothesis_tests.py</span></a><span class="file_size pull-right">10.3 kB</span><span class="item_modified pull-right" title="2019-11-15 13:29">a minute ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/view/hypothesis_tests.py.html" target="_blank"><span class="item_name">hypothesis_tests.py.html</span></a><span class="file_size pull-right">67.8 kB</span><span class="item_modified pull-right" title="2019-11-15 12:20">an hour ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/LaqnData_no2.csv" target="_blank"><span class="item_name">LaqnData_no2.csv</span></a><span class="file_size pull-right">1.32 MB</span><span class="item_modified pull-right" title="2019-11-13 15:38">2 days ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/LaqnData_pm10.csv" target="_blank"><span class="item_name">LaqnData_pm10.csv</span></a><span class="file_size pull-right">1.47 MB</span><span class="item_modified pull-right" title="2019-11-13 15:38">2 days ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/files/London%20Air%20Quality.pdf" target="_blank"><span class="item_name">London Air Quality.pdf</span></a><span class="file_size pull-right">565 kB</span><span class="item_modified pull-right" title="2019-11-14 15:00">a day ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/README.md" target="_blank"><span class="item_name">README.md</span></a><span class="file_size pull-right">2.63 kB</span><span class="item_modified pull-right" title="2019-11-15 13:29">seconds ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/files/ulez_six_month_evaluation_report_final_oct.pdf" target="_blank"><span class="item_name">ulez_six_month_evaluation_report_final_oct.pdf</span></a><span class="file_size pull-right">1.12 MB</span><span class="item_modified pull-right" title="2019-11-15 11:51">2 hours ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div><div class="list_item row"><div class="col-md-12"><input type="checkbox" title="Click here to rename, delete, etc."><i class="item_icon file_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/edit/visualizations.py" target="_blank"><span class="item_name">visualizations.py</span></a><span class="file_size pull-right">3.62 kB</span><span class="item_modified pull-right" title="2019-11-07 14:26">8 days ago</span><div class="item_buttons pull-right"><div class="running-indicator" style="visibility: hidden;">Running</div></div></div></div>
+          </div>
+        </div>
+        <div id="running" class="tab-pane">
+          <div id="running_toolbar" class="row list_toolbar">
+            <div class="col-sm-8 no-padding">
+              <span id="running_list_info" class="toolbar_info">Currently running Jupyter processes</span>
+            </div>
+            <div class="col-sm-4 no-padding tree-buttons">
+              <span id="running_buttons" class="pull-right toolbar_buttons">
+              <button id="refresh_running_list" title="Refresh running list" aria-label="Refresh running list" class="btn btn-default btn-xs"><i class="fa fa-refresh"></i></button>
+              </span>
+            </div>
+          </div>
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-target="#collapseOne" href="http://localhost:8888/tree#">
+                  Terminals
+                <i class="fa fa-caret-down"></i></a>
+              </div>
+              <div id="collapseOne" class=" collapse in">
+                <div class="panel-body">
+                  <div id="terminal_list" class="list_container">
+                    <div id="terminal_list_header" class="row list_placeholder">
+                    
+                      <div> There are no terminals running. </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-target="#collapseTwo" href="http://localhost:8888/tree#">
+                  Notebooks
+                <i class="fa fa-caret-down"></i></a>
+              </div>
+              <div id="collapseTwo" class=" collapse in">
+                <div class="panel-body">
+                  <div id="running_list" class="list_container">
+                    <div id="running_list_placeholder" class="row list_placeholder" style="display: none;">
+                      <div> There are no notebooks running. </div>
+                    </div>
+                  <div class="list_item row"><div class="col-md-12"><i class="item_icon running_notebook_icon icon-fixed-width"></i><a class="item_link" href="http://localhost:8888/notebooks/LondonAirQuality_final_notebook.ipynb" target="_blank"><span class="item_name">LondonAirQuality_final_notebook.ipynb</span></a><span class="file_size pull-right">&nbsp;</span><span class="item_modified pull-right" title="2019-11-15 13:29">seconds ago</span><div class="item_buttons pull-right"><div class="kernel-name">Python 3</div><button class="btn btn-warning btn-xs">Shutdown</button></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="clusters" class="tab-pane">
+          Clusters tab is now provided by IPython parallel.
+          See '<a href="https://github.com/ipython/ipyparallel">IPython parallel</a>' for installation details.
+        </div>
+      <div id="conda" class="tab-pane">
+  <div id="environments">
+    <div id="env_toolbar" class="list_toolbar row">
+      <div class="col-xs-10 no-padding">
+        <span id="env_list_info" class="toolbar_info">Conda environments</span>
+      </div>
+      <div class="col-xs-2 no-padding tree-buttons">
+        <span id="env_buttons" class="toolbar_buttons pull-right">
+        <button id="new_env" title="Create new environment" class="btn btn-default btn-xs"><i class="fa fa-plus"></i></button>
+        <button id="refresh_env_list" title="Refresh environment list" class="btn btn-default btn-xs"><i class="fa fa-refresh"></i></button>
+        </span>
+      </div>
+    </div>
+    <div id="env_list" class="list_container">
+      <div id="env_list_header" class="list_header row"><div class="col-xs-1">Action</div><div class="col-xs-3">Name</div><div class="col-xs-1">Default?</div><div class="col-xs-7">Directory</div></div>
+      <div id="env_list_body" class="list_body scrollable">
+      </div>
+    </div>
+  </div>
+
+  <div id="available_packages" class="half_width" style="float: left">
+    <div id="avail_toolbar" class="list_toolbar row">
+      <div class="col-xs-6 no-padding">
+        <span id="avail_list_info" class="toolbar_info">Available packages</span>
+      </div>
+      <div class="col-xs-5 no-padding tree-buttons">
+        <span id="avail_buttons" class="toolbar_buttons pull-right">
+        <input id="searchbox" title="Search" placeholder="Search..." class="form-control small-input">
+        </span>
+      </div>
+      <div class="col-xs-1 no-padding tree-buttons">
+        <span id="avail_buttons" class="toolbar_buttons pull-right">
+        <button id="install" title="Install selected packages" class="btn btn-default btn-xs"><i class="fa fa-arrow-right"></i></button>
+        </span>
+      </div>
+    </div>
+    <div id="avail_list" class="list_container">
+      <div id="avail_list_header" class="list_header row"><div class="col-xs-5">Name</div><div class="col-xs-2">Version</div><div class="col-xs-5">Channel</div></div>
+      <div id="avail_list_body" class="list_body scrollable">
+      </div>
+    </div>
+  </div>
+
+  <div id="installed_packages" class="half_width" style="float: right">
+    <div id="pkg_toolbar" class="list_toolbar row">
+      <div class="col-xs-8 no-padding">
+        <span id="pkg_list_info" class="toolbar_info">Installed Conda packages</span>
+      </div>
+      <div class="col-xs-4 no-padding tree-buttons">
+        <span id="pkg_buttons" class="toolbar_buttons pull-right">
+        <button id="refresh_pkg_list" title="Refresh package list" class="btn btn-default btn-xs"><i class="fa fa-refresh"></i></button>
+        <button id="check_update" title="Check for Updates" class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
+        <button id="update_pkgs" title="Update selected packages" class="btn btn-default btn-xs"><i class="fa fa-cloud-download"></i></button>
+        <button id="remove_pkgs" title="Remove selected packages" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button>
+        </span>
+      </div>
+    </div>
+    <div id="pkg_list" class="list_container">
+      <div id="pkg_list_header" class="list_header row"><div class="col-xs-5">Name</div><div class="col-xs-2">Version</div><div class="col-xs-2">Build</div><div class="col-xs-3">Available</div></div>
+      <div id="pkg_list_body" class="list_body scrollable">
+      </div>
+    </div>
+  </div>
+</div><div id="nbextensions_configurator" class="tab-pane"><div id="nbextensions-configurator-container" class="nbextensions-configurator-container container"><div class="nbext-buttons tree-buttons no-padding pull-right"><span class="btn-group"><button title="Refresh list of nbextensions" class="nbext-button-refreshlist btn btn-default btn-xs"><i class="fa fa-refresh"></i></button></span></div><div class="row container-fluid nbext-selector"><h3>Configurable nbextensions</h3><div class="nbext-showhide-incompat" style="display: block;"><input type="checkbox" id="nbext_hide_incompat"> disable configuration for nbextensions without explicit compatibility (they may break your notebook environment, but can be useful to show for nbextension development)</div><div id="nbext-filter-grp" class="nbext-filter-grp input-group"><span id="nbext-filter-label" class="nbext-filter-label input-group-addon"></span><div class="nbext-filter-input-wrap form-control" aria-describedby="nbext-filter-label"><div class="nbext-filter-input-subwrap"><input placeholder="by description, section, or tags" class="ui-autocomplete-input" autocomplete="off"><span class="fa fa-remove" title="clear filter"></span></div></div></div><nav class="row"><ul class="nav nav-pills"><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>(some) LaTeX environments for Jupyter</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>2to3 Converter</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>AddBefore</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Autopep8</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>AutoSaveTime</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Autoscroll</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Cell Filter</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Code Font Size</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Code prettify</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Codefolding</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Codefolding in Editor</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>CodeMirror mode extensions</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Collapsible Headings</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Comment/Uncomment Hotkey</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle nbext-enabled"></i>contrib_nbextensions_help_item</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>datestamper</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Equation Auto Numbering</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>ExecuteTime</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Execution Dependencies</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Exercise</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Exercise2</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Export Embedded HTML</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Freeze</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Gist-it</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Help panel</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Hide Header</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Hide input</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Hide input all</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Highlight selected word</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>highlighter</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Hinterland</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Initialization cells</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>isort formatter</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Keyboard shortcut editor</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Launch QTConsole</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Limit Output</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Live Markdown Preview</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Load TeX macros</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Move selected cells</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Navigation-Hotkeys</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#" class="text-warning bg-warning"><i class="fa fa-fw nbext-enable-toggle nbext-enabled"></i>nb_conda/main</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#" class="text-warning bg-warning"><i class="fa fa-fw nbext-enable-toggle nbext-enabled"></i>nb_conda/tree</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle nbext-enabled"></i>Nbextensions dashboard tab</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle nbext-enabled"></i>Nbextensions edit menu item</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>nbTranslate</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Notify</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#" class="text-warning bg-warning"><i class="fa fa-fw nbext-enable-toggle nbext-enabled"></i>plotlywidget/extension</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Printview</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Python Markdown</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Rubberband</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Ruler</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Ruler in Editor</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Runtools</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Scratchpad</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>ScrollDown</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Select CodeMirror Keymap</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>SKILL Syntax</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nbext-incompatible disabled" title="possibly incompatible"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Skip-Traceback</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Snippets</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Snippets Menu</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>spellchecker</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Split Cells Notebook</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Table of Contents (2)</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>table_beautifier</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Toggle all line numbers</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Tree Filter</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>Variable Inspector</a></li><li class="col-lg-3 col-md-4 col-sm-6 col-xs-12 active"><a href="http://localhost:8888/tree#"><i class="fa fa-fw nbext-enable-toggle"></i>zenmode</a></li></ul></nav></div><div class="row nbext-ext-row" style=""><h3 class="col-xs-12">zenmode</h3><div class="col-xs-12"><div class="nbext-desc"><p>A little extension to give Zenmode functionality to the IPython notebook</p></div><div>section: notebook</div><div>require path: <span class="rendered_html"><code>zenmode/main</code></span></div><div class="nbext-compat-div">compatibility: <span>4.x, <span class="bg-success text-success">5.x</span></span></div><div class="btn-group nbext-enable-btns"><button type="button" class="btn btn-primary">Enable</button><button type="button" class="btn btn-default disabled" disabled="">Disable</button></div></div><div class="panel panel-default nbext-params col-xs-12"><div class="panel-heading"><i class="fa fa-fw fa-caret-down"></i>Parameters<a class="pull-right" href="http://localhost:8888/tree#" title="reset parameters to defaults"><i class="fa fa-refresh"></i> reset</a></div><div class="list-group"><div class="form-group list-group-item"><input type="checkbox" id="input_zenmode_set_zenmode_on_load"> <label for="input_zenmode_set_zenmode_on_load">Set zenmode on when a notebook opens</label></div><div class="form-group list-group-item"><input type="checkbox" id="input_zenmode_use_builtin_backgrounds"> <label for="input_zenmode_use_builtin_backgrounds">Use builtin backgrounds in addition to any specified by URL</label></div><div class="form-group list-group-item"><input type="checkbox" id="input_zenmode_hide_header"> <label for="input_zenmode_hide_header">Hide the header in zenmode</label></div><div class="form-group list-group-item"><input type="checkbox" id="input_zenmode_hide_menubar"> <label for="input_zenmode_hide_menubar">Hide the menubar in zenmode</label></div><div class="form-group list-group-item"><label for="input_zenmode_backgrounds">Urls to use as backgrounds. Any beginning with # are ignored.</label><div class="nbext-list-wrap" id="input_zenmode_backgrounds"><ul class="list-unstyled ui-sortable"></ul><div class="input-group"><a class="btn btn-default input-group-btn"><i class="fa fa-plus"></i> new item</a></div></div></div></div></div></div><div class="row nbext-readme panel panel-default" style=""><div class="panel-heading"><i class="fa fa-fw fa-caret-down"></i><span>/nbextensions/zenmode/README.md</span></div><div class="panel-body"><div class="rendered_html"><h1 id="Zenmode">Zenmode<a class="anchor-link" href="http://localhost:8888/tree#Zenmode">¶</a></h1>
+<p>A little extension to give Zenmode functionality to the IPython notebook</p>
+</div></div></div></div></div></div><!-- class:tab-content -->
+    </div><!-- id:tab_content -->
+  </div><!-- ipython-main-app  -->
+
+
+</div>
+
+
+
+
+
+    
+
+
+
+<script src="./Home_files/main.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+  function _remove_token_from_url() {
+    if (window.location.search.length <= 1) {
+      return;
+    }
+    var search_parameters = window.location.search.slice(1).split('&');
+    for (var i = 0; i < search_parameters.length; i++) {
+      if (search_parameters[i].split('=')[0] === 'token') {
+        // remote token from search parameters
+        search_parameters.splice(i, 1);
+        var new_search = '';
+        if (search_parameters.length) {
+          new_search = '?' + search_parameters.join('&');
+        }
+        var new_url = window.location.origin + 
+                      window.location.pathname + 
+                      new_search + 
+                      window.location.hash;
+        window.history.replaceState({}, "", new_url);
+        return;
+      }
+    }
+  }
+  _remove_token_from_url();
+</script>
+
+
+<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body></html>

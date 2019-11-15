@@ -258,7 +258,7 @@ def hypothesis_test_two(sample1, sample2,
     
     
     if assertion1 and assertion2:
-        statement = f"The effect of {first_factor} on the levels of {var_of_interest} was {abs(coh_d1/coh_d2)} times {difference} than the effect of {second_factor}."
+        statement = f"The effect of {first_factor} on the levels of {var_of_interest} was {abs(coh_d1/coh_d2)} times the effect of {second_factor}."
         
     return statement
     

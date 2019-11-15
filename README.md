@@ -11,17 +11,17 @@ We are defining impact on air quality using the amount of Nitrogen Oxides (NOx) 
 
 Our hypotheses are:
 (Mina)
-1. The introducton of ULEZ (8th April 2019) decreased the amount of NOx in Zone 1 of Central London by at least 42%. 
-[H0] - ULEZ reduced the amount of NOx in Zone 1 by less than 42%.
-2. The introduction of ULEZ was at least 25% more effective than the introduction of LEZ (4th February 2008) in reducing NOx levels in Central London.
-[H0] - The effect of ULEZ on NOx levels was less than 25% more than the impact of LEZ. 
+1. The introducton of ULEZ decreased the amount of NOx in Zone 1 of Central London by an effect size of at least 0.3. 
+Null hypothesis - ULEZ did not reduced the amount of NOx in Zone 1 by any significant effect size.
+2. The introduction of ULEZ was at least 1.25 as effective than the introduction of LEZ in reducing NO2 levels in Central London.
+Null hypothesis - The effect of ULEZ on NO2 levels was not significantly more effective than LEZ in reducing NO2 levels in Central London. 
+(Ioana)
+3. The introducton of ULEZ decreased the amount of PM10 in Zone 1 of Central London by an effect size of at least 0.4. 
+Null hypothesis - ULEZ did not reduce the amount of PM10 in Zone 1 of Central London by any significant amount. 
+4. The introduction of ULEZ was at least 1.5 as effective as the introduction of LEZ in reducing PM10 levels in Central London. 
+Null hypothesis - The effect of ULEZ on PM10 was not significantly more effectve than LEZ in reducing PM10 levels in Central London. 
 
-(Ioana) 
-3. The introducton of ULEZ decreased the amount of PM10 in Zone 1 of Central London by at least 33%. 
-[H0] - ULEZ reduced the amount of PM10 in Zone 1 by less than 33%.
-4. The introduction of ULEZ was at least 25% more effective than the introduction of LEZ in reducing PM10 levels in Central London. 
-[H0] - The effect of ULEZ on PM10 levels was less than 25% more than the impact of LEZ. 
-
+Our alpha values are set at 0.05.
 
 _________________________________________________________________________
 References:
