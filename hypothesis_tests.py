@@ -87,7 +87,7 @@ def plot_dists(sample_list, label_list, colours_list):
     return x,y,lines,plt.legend()
 
 
-def visualize_one_side_t(t_stat, n_control, n_experimental, df, title):
+def visualize_one_side_t(t_stat, n_control, n_experimental, df):
     # initialize a matplotlib "figure"
     fig = plt.figure(figsize=(15,10))
     ax = fig.gca()
@@ -199,7 +199,7 @@ def hypothesis_test_two(sample1, sample2,
                         other_sample1_label, other_sample2_label,
                         other_sample1_colour, other_sample2_colour,
                         second_factor,
-                        alpha = None, var_of_interest):
+                        var_of_interest, alpha = None):
     
     """
     This hypothesis test will conduct the first hypothesis test for two pairs of samples (designated as sample1, sample2 
