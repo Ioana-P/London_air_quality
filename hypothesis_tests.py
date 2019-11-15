@@ -22,6 +22,7 @@ def create_sample_dists(data, y_var, n_samples, sample_size):
     n_samples - how many times should we sample from the population;
     sample_size - how large should each sample be"""
     sample_means = []
+    np.random.seed(12345)
     for i in range(n_samples):
         sample = np.random.choice(data[y_var], size=sample_size, replace=True)
         sample_means.append(np.mean(sample))
