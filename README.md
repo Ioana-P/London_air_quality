@@ -7,7 +7,11 @@ Our target audience is TfL and the office of the Mayor of London. This analysis 
 
 The proposed effect sizes below are partially taken from the TfL consultation on ULEZ (TfL, 2015).
 
-We are defining impact on air quality using the amount of Nitrogen Oxides (NOx) and particulate matter (PM10) as detected by automatic air sensors. We will select multiple sensor sites in London zone 1 that are inside the current ULEZ radius for our data. 
+We are defining impact on air quality using the amount of Nitrogen Oxides (NOx) and particulate matter (PM10) as detected by automatic air sensors. We will select multiple sensor sites in London zone 1 that are inside the current ULEZ radius for our data. These levels are reported in miligrams per cubic meter. Here is a snapshot of the initial data:
+
+/fig/no2_2007_08.jpg
+
+/fig/pm10_2018_19.jpg
 
 Our hypotheses are:
 1. The introducton of ULEZ decreased the amount of NOx in Zone 1 of Central London by an effect size of at least 0.3. 
@@ -20,19 +24,25 @@ Null hypothesis - ULEZ did not reduce the amount of PM10 in Zone 1 of Central Lo
 Null hypothesis - The effect of ULEZ on PM10 was not significantly more effectve than LEZ in reducing PM10 levels in Central London. 
 
 Our alpha values are set at 0.05.
+Here is the result for the first and third tests:
+
+/fig/hypothesis_test_1.jpg
+
+/fig/hypothesis_test_2.jpg
+
 
 Repo index:
-LondonAirQuality_final_notebook.ipynb - main notebook containing our detailed report and findings
-London Air Quality.pdf - final presentation of findings
-ulez_six_month_evaluation_report_final_oct.pdf - Mayor of London report on Cetral London's progress from ULEZ. Part of our research literature, included here for your convenience
-visualizations.py - functions for plotting our distributions
-hypothesis_tests.py - .py file for our null-hypothesis significance testing functions and for plotting visuals of those tests
+* LondonAirQuality_final_notebook.ipynb - main notebook containing our detailed report and findings
+* London Air Quality.pdf - final presentation of findings
+* ulez_six_month_evaluation_report_final_oct.pdf - Mayor of London report on Cetral London's progress from ULEZ. Part of our research literature, included here for your convenience
+* visualizations.py - functions for plotting our distributions
+* hypothesis_tests.py - .py file for our null-hypothesis significance testing functions and for plotting visuals of those tests
 
 
-raw_data - data as downloaded / obtained via API; pre-cleaning
-clean_data - data files after merging and cleaning; data as used in statistical tests
-fig - images and visualizations saved directly from notebook
-archive_nb - additional notebooks that were generated as part of the cleaning or modelling process; not included in the final product
+* raw_data - data as downloaded / obtained via API; pre-cleaning
+* clean_data - data files after merging and cleaning; data as used in statistical tests
+* fig - images and visualizations saved directly from notebook
+* archive_nb - additional notebooks that were generated as part of the cleaning or modelling process; not included in the final product
 
 _________________________________________________________________________
 References:
