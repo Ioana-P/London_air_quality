@@ -1,7 +1,6 @@
 """
 This module is for your final hypothesis tests.
 Each hypothesis test should tie to a specific analysis question.
-
 Each test should print out the results in a legible sentence
 return either "Reject the null hypothesis" or "Fail to reject the null hypothesis" depending on the specified alpha
 """
@@ -100,6 +99,7 @@ def visualize_one_side_t(t_stat, df):
     # Draw one sided boundary for critical-t
     ax.axvline(x=+t_stat, color='red', linestyle='--', lw=3,label='t-statistic')
     ax.legend()
+    plt.title(f'Visualizing our t - statistic : {t_stat}')
     plt.show()
     return 
 
@@ -181,7 +181,8 @@ def hypothesis_test_one(sample1, sample2,
         print(f"with an effect size, Cohen's d, of {str(round(coh_d,3))} and power of {power}.")
     else:
         print(".")
-
+    
+    plt.savefig('fig/hypothesis_test_1.jpg')
     return (status, assertion, coh_d, t_statistic, dof)
 
 
@@ -259,6 +260,6 @@ def hypothesis_test_two(sample1, sample2,
     
     if assertion1 and assertion2:
         statement = f"The effect of {first_factor} on the levels of {var_of_interest} was {abs(coh_d1/coh_d2)} times the effect of {second_factor}."
-        
-    return statement
     
+    plt.savefig('fig/hypothesis_test_2.jpg')
+    return statement
