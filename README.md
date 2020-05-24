@@ -26,13 +26,21 @@ Null hypothesis - The effect of ULEZ on PM10 was not significantly more effectve
 Our alpha values were set at 0.05.
 
 Our tests (illustrated below) lead us to believe that ULEZ was effective in reducing NO2 and PM10 levels by a statistically significant margin. Interestingly, ULEZ was significantly more effective in reducing PM10 than LEZ was, whereas LEZ had a slightly larger impact on NO2 than ULEZ. Based on our data, we can expect PM10 levels across London to be driven down far further if and when ULEZ is expanded. Moving forward, we'd like to repeat the sampling and analysis but with other pollutants (e.g. CO and PM2.5) and across other sites, such as Inner and Outer London.
+
 How did Nitrogen Dioxide levels change before and after the introduction of ULEZ:
+
 ![hypothesis_test_1](https://github.com/Ioana-P/London_air_quality/blob/master/fig/hypothesis_test_1_no2.jpg)
+
 How did PM10 levels change before and after the introduction of ULEZ:
+
 ![hypothesis_test_2](https://github.com/Ioana-P/London_air_quality/blob/master/fig/hypothesis_test_2_pm10.jpg)
+
 How did ULEZ compare to LEZ in the reduction of NO2 in central London:
+
 ![hypothesis_test_3](https://github.com/Ioana-P/London_air_quality/blob/master/fig/hypothesis_test_3_no2.jpg)
+
 How did ULEZ compare to LEZ in the reduction of PM10 in central London:
+
 ![hypothesis_test_4](https://github.com/Ioana-P/London_air_quality/blob/master/fig/hypothesis_test_4_pm10.jpg)
 
 Repo index:
