@@ -182,7 +182,7 @@ def hypothesis_test_one(sample1, sample2,
     else:
         print(".")
     
-    plt.savefig('fig/hypothesis_test_1.jpg')
+    plt.savefig(f'fig/hypothesis_test_1_{variable}.jpg')
     return (status, assertion, coh_d, t_statistic, dof)
 
 
@@ -261,5 +261,5 @@ def hypothesis_test_two(sample1, sample2,
     if assertion1 and assertion2:
         statement = f"The effect of {first_factor} on the levels of {var_of_interest} was {abs(coh_d1/coh_d2)} times the effect of {second_factor}."
     
-    plt.savefig('fig/hypothesis_test_2.jpg')
+    plt.savefig(f'fig/hypothesis_test_2_{variable}.jpg')
     return statement
