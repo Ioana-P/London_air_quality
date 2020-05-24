@@ -9,9 +9,9 @@ The proposed effect sizes below are partially taken from the TfL consultation on
 
 We are defining impact on air quality using the amount of Nitrogen Oxides (NOx) and particulate matter (PM10) as detected by automatic air sensors. We will select multiple sensor sites in London zone 1 that are inside the current ULEZ radius for our data. These levels are reported in miligrams per cubic meter. Here is a snapshot of the initial data:
 
-/fig/no2_2007_08.jpg
+fig/no2_2007_08.jpg
 
-/fig/pm10_2018_19.jpg
+fig/pm10_2018_19.jpg
 
 Our hypotheses are:
 1. The introducton of ULEZ decreased the amount of NOx in Zone 1 of Central London by an effect size of at least 0.3. 
@@ -26,9 +26,9 @@ Null hypothesis - The effect of ULEZ on PM10 was not significantly more effectve
 Our alpha values are set at 0.05.
 Here is the result for the first and third tests:
 
-/fig/hypothesis_test_1.jpg
+fig/hypothesis_test_1.jpg
 
-/fig/hypothesis_test_2.jpg
+fig/hypothesis_test_2.jpg
 
 
 Repo index:
